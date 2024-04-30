@@ -42,7 +42,7 @@ public class ItemServiceImpl implements ItemService {
                 return item;
             }
         }
-        throw new NotFoundException("Не найден предмет c id " + itemId);
+        throw new NotFoundException("Не найден предмет c id-" + itemId);
     }
 
     @Override

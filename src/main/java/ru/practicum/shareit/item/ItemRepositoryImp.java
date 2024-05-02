@@ -59,7 +59,7 @@ public class ItemRepositoryImp implements ItemRepository {
     @Override
     public List<Item> getItemsByUser(int userId) {
         if (!itemRepo.containsKey(userId)) {
-            throw new NotFoundException("Не найден пользователь с id " + userId);
+            throw new NotFoundException("Не найдены вещи у пользователя с id " + userId);
         }
         List<Item> itemList = itemRepo.get(userId);
         return itemList;

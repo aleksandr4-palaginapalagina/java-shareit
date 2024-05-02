@@ -11,9 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * TODO Sprint add-controllers.
- */
+
 @RestController
 @Slf4j
 @RequestMapping("/items")
@@ -26,7 +24,7 @@ public class ItemController {
     public List<ItemDto> getItems(@RequestHeader("X-Sharer-User-Id") int userId) {
         log.info("Get items by userId = {}", userId);
         List<Item> itemList = itemService.getItems(userId);
-        return itemList.stream().map(ItemMapper::toItemResponce).collect(Collectors.toList());
+        return itemList.stream().map(ItemMapper::toItemDto).collect(Collectors.toList());
     }
 
     @PostMapping
@@ -35,7 +33,7 @@ public class ItemController {
         Item item = ItemMapper.toItem(itemDto);
         item = itemService.createItem(userId, item);
         log.info("Create item by userId - {}, item = {}", userId, item);
-        ItemDto itemDtoToResponce = ItemMapper.toItemResponce(item);
+        ItemDto itemDtoToResponce = ItemMapper.toItemDto(item);
         return itemDtoToResponce;
     }
 
@@ -45,13 +43,13 @@ public class ItemController {
         item.setId(itemId);
         log.info("Update item by userId - {}, item = {}", userId, item);
         item = itemService.updateItem(userId, item);
-        return ItemMapper.toItemResponce(item);
+        return ItemMapper.toItemDto(item);
     }
 
     @GetMapping("/{itemId}")
     public ItemDto getItem(@PathVariable int itemId) {
         log.info("Get item itemId={}", itemId);
-        return ItemMapper.toItemResponce(itemService.getItem(itemId));
+        return ItemMapper.toItemDto(itemService.getItem(itemId));
     }
 
     @GetMapping("/search")
@@ -61,7 +59,7 @@ public class ItemController {
             return Collections.emptyList();
         }
         List<Item> itemList = itemService.searchItems(text);
-        return itemList.stream().map(ItemMapper::toItemResponce).collect(Collectors.toList());
+        return itemList.stream().map(ItemMapper::toItemDto).collect(Collectors.toList());
     }
 
 

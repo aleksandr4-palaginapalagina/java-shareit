@@ -10,9 +10,7 @@ import ru.practicum.shareit.user.dto.UserDto;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * TODO Sprint add-controllers.
- */
+
 @RestController
 @Slf4j
 @RequestMapping(path = "/users")
@@ -22,7 +20,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public List<UserDto> getAllUsers() {
+    public List<UserDto> getAll() {
         List<User> userList = userService.getAll();
         List<UserDto> userDtoList = userList.stream().map(UserMapper::toUserDto).collect(Collectors.toList());
         log.info("Запрошены все пользователи");
@@ -31,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDto createUsers(@Validated @RequestBody UserDto userDto) {
+    public UserDto create(@Validated @RequestBody UserDto userDto) {
         User user = UserMapper.toUser(userDto);
         user = userService.createUser(user);
         log.info("Пользователь создан {}", user);
@@ -41,7 +39,7 @@ public class UserController {
     }
 
     @PatchMapping("/{userId}")
-    public UserDto updateUsers(@PathVariable int userId, @RequestBody UserDto userDto) {
+    public UserDto update(@PathVariable int userId, @RequestBody UserDto userDto) {
         log.info("Пользователь обновлен {}", userDto);
         User user = UserMapper.toUser(userDto);
         user.setId(userId);
@@ -49,14 +47,14 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserDto getUser(@PathVariable int id) {
+    public UserDto get(@PathVariable int id) {
         log.info("Запрошен пользователь с id - {}", id);
         User user = userService.getUserById(id);
         return UserMapper.toUserDto(user);
     }
 
     @DeleteMapping("/{userId}")
-    public UserDto deleteUser(@PathVariable int userId) {
+    public UserDto delete(@PathVariable int userId) {
         log.info("Пользователь {} удален", userId);
         User user = userService.deleteUser(userId);
         return UserMapper.toUserDto(user);

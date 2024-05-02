@@ -7,5 +7,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class ErrorResponse {
 
-    String massage;
+    private String message;
 }

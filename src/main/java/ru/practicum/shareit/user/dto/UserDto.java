@@ -1,20 +1,22 @@
 package ru.practicum.shareit.user.dto;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
 
+
+@AllArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
+@ToString
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class UserDto {
-    private int id;
-    @NotEmpty
+
+    private Long id;
     private String name;
-    @NotEmpty
-    @Email(message = "неверно указан email")
+    @NotBlank
+    @Email
+    @EqualsAndHashCode.Include
     private String email;
 }

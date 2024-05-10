@@ -21,6 +21,7 @@ import static ru.practicum.shareit.utils.Message.MODEL_NOT_FOUND;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
@@ -45,7 +46,8 @@ public class UserServiceImpl implements UserService {
             user.setName(userDto.getName());
         }
 
-        return toUserDto(userRepository.save(user));
+        userRepository.save(user);
+        return toUserDto(user);
     }
 
     @Override

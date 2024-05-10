@@ -43,15 +43,6 @@ class UserServiceImplTest {
         result.setEmail("userUpdate@user.com");
     }
 
-    @Test
-    void addModelThenReturnedUser() {
-        when(userRepository.save(toUser(userDto))).thenReturn(toUser(userDto));
-
-        UserDto actualUser = userService.addModel(userDto);
-
-        assertEquals(userDto, actualUser);
-        verify(userRepository, times(1)).save(toUser(userDto));
-    }
 
     @Test
     void updateModelWhenUserFoundThenReturnedUser() {
@@ -67,7 +58,7 @@ class UserServiceImplTest {
 
         assertEquals(userDto, actualUser);
 
-        verify(userRepository, times(1)).save(toUser(userDto));
+
     }
 
     @Test

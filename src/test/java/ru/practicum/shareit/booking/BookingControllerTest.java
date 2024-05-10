@@ -2,7 +2,6 @@ package ru.practicum.shareit.booking;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -13,7 +12,7 @@ import ru.practicum.shareit.booking.dto.BookingDto;
 import ru.practicum.shareit.booking.dto.BookingDtoRequest;
 import ru.practicum.shareit.booking.model.BookingStatus;
 import ru.practicum.shareit.booking.service.BookingService;
-import ru.practicum.shareit.exception.ValidationException;
+import javax.validation.ValidationException;
 
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
@@ -73,7 +72,6 @@ class BookingControllerTest {
                 .andExpect(jsonPath("$.booker.id", is(bookingDto.getBooker().getId()), Long.class))
                 .andExpect(jsonPath("$.item.id", is(bookingDto.getItem().getId()), Long.class))
                 .andExpect(jsonPath("$.item.name", is(bookingDto.getItem().getName())));
-        verify(bookingService, Mockito.times(1));
     }
 
     @Test
@@ -97,7 +95,6 @@ class BookingControllerTest {
                 .andExpect(jsonPath("$.booker.id", is(bookingDto.getBooker().getId()), Long.class))
                 .andExpect(jsonPath("$.item.id", is(bookingDto.getItem().getId()), Long.class))
                 .andExpect(jsonPath("$.item.name", is(bookingDto.getItem().getName())));
-        verify(bookingService, Mockito.times(1));
     }
 
     @Test
@@ -117,7 +114,6 @@ class BookingControllerTest {
                 .andExpect(jsonPath("$.booker.id", is(bookingDto.getBooker().getId()), Long.class))
                 .andExpect(jsonPath("$.item.id", is(bookingDto.getItem().getId()), Long.class))
                 .andExpect(jsonPath("$.item.name", is(bookingDto.getItem().getName())));
-        verify(bookingService, Mockito.times(1));
     }
 
     @Test
@@ -139,7 +135,6 @@ class BookingControllerTest {
                         .accept(MediaType.ALL))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
-        verify(bookingService, Mockito.times(1));
     }
 
     @Test
@@ -167,7 +162,6 @@ class BookingControllerTest {
                 .andExpect(jsonPath("$[0].booker.id", is(bookingDto.getBooker().getId()), Long.class))
                 .andExpect(jsonPath("$[0].item.id", is(bookingDto.getItem().getId()), Long.class))
                 .andExpect(jsonPath("$[0].item.name", is(bookingDto.getItem().getName())));
-        verify(bookingService, Mockito.times(1));
     }
 
     @Test
@@ -189,6 +183,5 @@ class BookingControllerTest {
                         .accept(MediaType.ALL))
                 .andExpect(status().is4xxClientError())
                 .andExpect(mvcResult -> mvcResult.getResolvedException().getClass().equals(ValidationException.class));
-        verify(bookingService, Mockito.times(1));
     }
 }

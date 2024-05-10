@@ -15,7 +15,7 @@ import ru.practicum.shareit.booking.model.BookingStatus;
 import ru.practicum.shareit.booking.repository.BookingRepository;
 import ru.practicum.shareit.booking.service.BookingServiceImpl;
 import ru.practicum.shareit.exception.NotFoundException;
-import ru.practicum.shareit.exception.ValidationException;
+import javax.validation.ValidationException;
 import ru.practicum.shareit.item.repository.ItemRepository;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.repository.UserRepository;
@@ -207,7 +207,7 @@ class BookingServiceImplTest {
         List<Booking> listBooking2 = List.of(booking);
         when(userRepository.findById(anyLong())).thenReturn(Optional.of(user2));
 
-        // status WAITING
+
         when(bookingRepository.findByBookerIdAndStatus(anyLong(), any(BookingStatus.class), any(Pageable.class)))
                 .thenReturn(new PageImpl<>(listBooking2));
 
@@ -216,7 +216,7 @@ class BookingServiceImplTest {
         assertEquals(1, actualList.size());
         assertEquals(booking.getId(), actualList.get(0).getId());
 
-        // status ALL
+
         when(bookingRepository.findByBookerId(anyLong(), any(Pageable.class))).thenReturn(new PageImpl<>(listBooking));
 
         actualList = service.getAllBookingByUserId(user2.getId(), "all", from, size);
@@ -224,11 +224,11 @@ class BookingServiceImplTest {
         assertEquals(2, actualList.size());
         assertEquals(2L, actualList.get(1).getId());
 
-        // status UNSUPPORTED_STATUS
+
         assertThrows(ValidationException.class, () -> service.getAllBookingByUserId(user2.getId(),
                 "UNSUPPORTED_STATUS", from, size));
 
-        // status CURRENT
+
         when(bookingRepository.findByBookerIdAndCurrentMomentBetweenStartAndEnd(anyLong(), any(LocalDateTime.class),
                 any(Pageable.class))).thenReturn(new PageImpl<>(listBooking2));
 
@@ -253,7 +253,7 @@ class BookingServiceImplTest {
         List<Booking> listBooking2 = List.of(booking);
         when(userRepository.findById(anyLong())).thenReturn(Optional.of(user));
 
-        // status WAITING
+
         when(bookingRepository.findByItemOwnerIdAndStatus(anyLong(), any(BookingStatus.class), any(Pageable.class)))
                 .thenReturn(new PageImpl<>(listBooking2));
 
@@ -262,7 +262,7 @@ class BookingServiceImplTest {
         assertEquals(1, actualList.size());
         assertEquals(booking.getId(), actualList.get(0).getId());
 
-        // status ALL
+
         when(bookingRepository.findByItemOwnerId(anyLong(), any(Pageable.class))).thenReturn(new PageImpl<>(listBooking));
 
         actualList = service.getAllBookingByOwnerItem(user2.getId(), "all", from, size);
@@ -270,11 +270,11 @@ class BookingServiceImplTest {
         assertEquals(2, actualList.size());
         assertEquals(2L, actualList.get(1).getId());
 
-        // status UNSUPPORTED_STATUS
+
         assertThrows(ValidationException.class, () -> service.getAllBookingByOwnerItem(user.getId(),
                 "UNSUPPORTED_STATUS", from, size));
 
-        // status CURRENT
+
         when(bookingRepository.findByItemOwnerIdAndCurrentMomentBetweenStartAndEnd(anyLong(), any(LocalDateTime.class),
                 any(Pageable.class))).thenReturn(new PageImpl<>(listBooking2));
 

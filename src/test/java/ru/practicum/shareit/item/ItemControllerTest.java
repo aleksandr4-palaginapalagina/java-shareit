@@ -2,7 +2,6 @@ package ru.practicum.shareit.item;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -26,7 +25,6 @@ import java.util.Set;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -89,7 +87,7 @@ class ItemControllerTest {
                         .accept(MediaType.ALL))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[]"));
-        verify(itemService, Mockito.times(1));
+
     }
 
     @Test
@@ -114,7 +112,7 @@ class ItemControllerTest {
                 .andExpect(jsonPath("$[0].name", is(itemDto.getName())))
                 .andExpect(jsonPath("$[0].description", is(itemDto.getDescription())))
                 .andExpect(jsonPath("$[0].available", is(itemDto.getAvailable())));
-        verify(itemService, Mockito.times(1));
+
     }
 
     @Test
@@ -132,12 +130,12 @@ class ItemControllerTest {
                 .andExpect(jsonPath("$.name", is(itemDto.getName())))
                 .andExpect(jsonPath("$.description", is(itemDto.getDescription())))
                 .andExpect(jsonPath("$.available", is(itemDto.getAvailable())));
-        verify(itemService, Mockito.times(1));
+
     }
 
     @Test
     void getItemByIDThenStatus200andItemReturned() throws Exception {
-        when(itemService.getItem(anyLong(),anyLong())).thenReturn(itemInfo);
+        when(itemService.getItem(anyLong(), anyLong())).thenReturn(itemInfo);
 
         mvc.perform(get("/items/{itemId}", itemInfo.getId())
                         .characterEncoding(StandardCharsets.UTF_8)
@@ -153,7 +151,6 @@ class ItemControllerTest {
                 .andExpect(jsonPath("$.nextBooking.id", is(itemInfo.getNextBooking().getId()), Long.class))
                 .andExpect(jsonPath("$.nextBooking.bookerId", is(itemInfo.getNextBooking().getBookerId()), Long.class))
         ;
-        verify(itemService, Mockito.times(1));
     }
 
     @Test
@@ -173,7 +170,6 @@ class ItemControllerTest {
                 .andExpect(jsonPath("$.name", is(itemDto.getName())))
                 .andExpect(jsonPath("$.description", is(itemDto.getDescription())))
                 .andExpect(jsonPath("$.available", is(itemDto.getAvailable())));
-        verify(itemService, Mockito.times(1));
     }
 
     @Test
@@ -186,7 +182,7 @@ class ItemControllerTest {
                 LocalDateTime.now()
         );
 
-        when(itemService.saveComment(anyLong(),anyLong(), any())).thenReturn(comment);
+        when(itemService.saveComment(anyLong(), anyLong(), any())).thenReturn(comment);
 
         mvc.perform(post("/items/{itemId}/comment", itemDto.getId())
                         .content(mapper.writeValueAsString(comment))
@@ -199,6 +195,6 @@ class ItemControllerTest {
                 .andExpect(jsonPath("$.text", is(comment.getText())))
                 .andExpect(jsonPath("$.authorName", is(comment.getAuthorName())))
                 .andExpect(jsonPath("$.created", is(comment.getCreated().format(TIME_FORMATTER))));
-        verify(itemService, Mockito.times(1));
+
     }
 }

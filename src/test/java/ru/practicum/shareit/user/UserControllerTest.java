@@ -32,10 +32,10 @@ import static ru.practicum.shareit.utils.Message.MODEL_NOT_FOUND;
 class UserControllerTest {
 
     @Autowired
-    private ObjectMapper mapper;
+    ObjectMapper mapper;
 
     @MockBean
-    private UserService userService;
+    UserService userService;
 
     @Autowired
     private MockMvc mvc;

@@ -14,7 +14,9 @@ import ru.practicum.shareit.booking.repository.BookingRepository;
 import ru.practicum.shareit.booking.model.BookingStatus;
 import ru.practicum.shareit.booking.model.Booking;
 import ru.practicum.shareit.exception.NotFoundException;
+
 import javax.validation.ValidationException;
+
 import ru.practicum.shareit.item.dto.CommentDto;
 import ru.practicum.shareit.item.dto.CommentDtoResponse;
 import ru.practicum.shareit.item.dto.ItemDto;
@@ -154,7 +156,7 @@ class ItemServiceImplTest {
 
     @Test
     void getItemByIdWhenItemFoundAndUserNotOwnerThenReturnedItem() {
-        Sort sort =  Sort.by(Sort.Direction.ASC, "start");
+        Sort sort = Sort.by(Sort.Direction.ASC, "start");
         BookingStatus status = BookingStatus.APPROVED;
         when(itemRepository.findById(item.getId())).thenReturn(Optional.of(item));
         when(bookingRepository.findByItemIdAndStatus(item.getId(), status, sort)).thenReturn(List.of(booking));

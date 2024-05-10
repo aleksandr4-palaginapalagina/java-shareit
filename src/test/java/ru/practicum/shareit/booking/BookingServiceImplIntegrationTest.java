@@ -12,7 +12,9 @@ import ru.practicum.shareit.booking.model.BookingStatus;
 import ru.practicum.shareit.booking.repository.BookingRepository;
 import ru.practicum.shareit.booking.service.BookingService;
 import ru.practicum.shareit.exception.NotFoundException;
+
 import javax.validation.ValidationException;
+
 import ru.practicum.shareit.item.repository.ItemRepository;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.repository.UserRepository;
@@ -25,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @Transactional
 @SpringBootTest(
-        properties = { "db.name=test"},
+        properties = {"db.name=test"},
         webEnvironment = SpringBootTest.WebEnvironment.NONE
 )
 @RequiredArgsConstructor(onConstructor_ = @Autowired)

@@ -120,7 +120,7 @@ class ItemRepositoryTest {
 
     @Test
     void findByIdAndOwnerIdWhenItemFoundThenReturnedItem() {
-        Optional<Item>  item = repository.findByIdAndOwnerId(itemResult.getId(), userResult.getId());
+        Optional<Item> item = repository.findByIdAndOwnerId(itemResult.getId(), userResult.getId());
 
         assertTrue(item.isPresent());
     }
@@ -128,7 +128,7 @@ class ItemRepositoryTest {
     @Test
     void findByIdAndOwnerIdWhenItemNotFoundThenReturnedEmpty() {
         long itemId = 0L;
-        Optional<Item>  item = repository.findByIdAndOwnerId(itemId, userResult.getId());
+        Optional<Item> item = repository.findByIdAndOwnerId(itemId, userResult.getId());
 
         assertTrue(item.isEmpty());
     }

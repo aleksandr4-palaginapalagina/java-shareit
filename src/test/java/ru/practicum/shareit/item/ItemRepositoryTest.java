@@ -70,13 +70,14 @@ class ItemRepositoryTest {
         item2.setRequest(requestResult);
         itemResult2 = repository.save(item2);
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
     }
 
     @Test
     void searchByTextThenReturnedItem() {
+
+        int from = 0;
+        int size = 10;
+        page = PageRequest.of(from > 0 ? from / size : 0, size);
         String text = "краска";
 
         List<Item> items = repository.search(text, page).toList();
@@ -87,6 +88,10 @@ class ItemRepositoryTest {
 
     @Test
     void searchByTextThenReturnedEmptyList() {
+
+        int from = 0;
+        int size = 10;
+        page = PageRequest.of(from > 0 ? from / size : 0, size);
         String text = "дрель";
 
         List<Item> items = repository.search(text, page).toList();
@@ -96,6 +101,10 @@ class ItemRepositoryTest {
 
     @Test
     void searchByTextWhenItemNotAvailableThenReturnedEmptyList() {
+
+        int from = 0;
+        int size = 10;
+        page = PageRequest.of(from > 0 ? from / size : 0, size);
         String text = "щетка";
 
         List<Item> items = repository.search(text, page).toList();
@@ -105,6 +114,10 @@ class ItemRepositoryTest {
 
     @Test
     void findByOwnerIdWhenItemOrUserNotFoundThenReturnedEmpty() {
+
+        int from = 0;
+        int size = 10;
+        page = PageRequest.of(from > 0 ? from / size : 0, size);
         long userId = 0L;
         Page<Item> items = repository.findByOwnerId(userId, page);
 
@@ -113,6 +126,10 @@ class ItemRepositoryTest {
 
     @Test
     void findByOwnerIdWhenItemFoundThenReturnedItemList() {
+
+        int from = 0;
+        int size = 10;
+        page = PageRequest.of(from > 0 ? from / size : 0, size);
         List<Item> items = repository.findByOwnerId(userResult.getId(), page).getContent();
 
         assertEquals(2, items.size());

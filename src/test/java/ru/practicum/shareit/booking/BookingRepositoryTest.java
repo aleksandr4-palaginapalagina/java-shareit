@@ -118,9 +118,8 @@ class BookingRepositoryTest {
     @Test
     void findByBookerIdAndCurrentMomentBetweenStartAndEnd() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+
+        page = PageRequest.of( 0, 10);
 
         List<Booking> bookingList = repository.findByBookerIdAndCurrentMomentBetweenStartAndEnd(userBooker.getId(),
                 LocalDateTime.of(2023, 5, 22, 3, 34, 1), page).getContent();
@@ -132,9 +131,7 @@ class BookingRepositoryTest {
     @Test
     void findByInvalidBookerIdAndCurrentMomentBetweenStartAndEndThenReturnedEmptyList() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         List<Booking> bookingList = repository.findByBookerIdAndCurrentMomentBetweenStartAndEnd(user.getId(),
                 LocalDateTime.of(2023, 5, 22, 1, 34, 1), page).getContent();
@@ -145,9 +142,7 @@ class BookingRepositoryTest {
     @Test
     void findByItemOwnerIdAndCurrentMomentBetweenStartAndEnd() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         List<Booking> bookingList = repository.findByItemOwnerIdAndCurrentMomentBetweenStartAndEnd(user.getId(),
                 LocalDateTime.of(2023, 5, 22, 3, 34, 1), page).getContent();
@@ -159,9 +154,7 @@ class BookingRepositoryTest {
     @Test
     void findByItemOwnerIdAndCurrentMomentBetweenStartAndEndThenReturnedEmptyList() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         List<Booking> bookingList = repository.findByItemOwnerIdAndCurrentMomentBetweenStartAndEnd(userBooker.getId(),
                 LocalDateTime.of(2023, 5, 22, 1, 34, 1), page).getContent();
@@ -204,9 +197,7 @@ class BookingRepositoryTest {
     @Test
     void findByBookerIdWhenFoundBookingOrNotFoundThenReturnedBookingOrEmpty() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         Page<Booking> bookingList = repository.findByBookerId(userBooker.getId(), page);
 
@@ -220,9 +211,7 @@ class BookingRepositoryTest {
     @Test
     void findByBookerIdAndEndBeforeWhenFoundBookingOrNotFoundThenReturnedBookingOrEmpty() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         Page<Booking> bookingList = repository.findByBookerIdAndEndBefore(userBooker.getId(),
                 LocalDateTime.of(2023, 5, 22, 1, 34, 1), page);
@@ -237,9 +226,7 @@ class BookingRepositoryTest {
     @Test
     void findByBookerIdAndStartAfterWhenFoundBookingOrNotFoundThenReturnedBooking() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         Page<Booking> bookingList = repository.findByBookerIdAndStartAfter(userBooker.getId(),
                 LocalDateTime.of(2023, 5, 21, 1, 34, 1), page);
@@ -255,9 +242,7 @@ class BookingRepositoryTest {
     @Test
     void findByBookerIdAndStatusWaiting() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         List<Booking> bookingList = repository.findByBookerIdAndStatus(userBooker.getId(), WAITING, page).getContent();
 
@@ -269,9 +254,7 @@ class BookingRepositoryTest {
     @Test
     void findByBookerIdAndStatusRejected() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         List<Booking> bookingList = repository.findByBookerIdAndStatus(userBooker.getId(), REJECTED, page).getContent();
 
@@ -294,9 +277,7 @@ class BookingRepositoryTest {
     @Test
     void findByItemOwnerIdWhenFoundBookingOrNotFoundThenReturnedBookingOrEmpty() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         Page<Booking> bookingList = repository.findByItemOwnerId(user.getId(), page);
 
@@ -310,9 +291,7 @@ class BookingRepositoryTest {
     @Test
     void findByItemOwnerIdAndEndBeforeWhenFoundBookingOrNotFoundThenReturnedBookingOrEmpty() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         Page<Booking> bookingList = repository.findByItemOwnerIdAndEndBefore(user.getId(),
                 LocalDateTime.of(2023, 5, 22, 1, 34, 1), page);
@@ -327,9 +306,7 @@ class BookingRepositoryTest {
     @Test
     void findByItemOwnerIdAndStartAfterWhenFoundBookingOrNotFoundThenReturnedBookingOrEmpty() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         Page<Booking> bookingList = repository.findByItemOwnerIdAndStartAfter(user.getId(),
                 LocalDateTime.of(2023, 5, 21, 1, 34, 1), page);
@@ -345,9 +322,7 @@ class BookingRepositoryTest {
     @Test
     void findByItemOwnerIdAndStatusWaiting() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         List<Booking> bookingList = repository.findByItemOwnerIdAndStatus(user.getId(), WAITING, page).getContent();
 
@@ -359,9 +334,7 @@ class BookingRepositoryTest {
     @Test
     void findByItemOwnerIdAndStatusRejected() {
 
-        int from = 0;
-        int size = 10;
-        page = PageRequest.of(from > 0 ? from / size : 0, size);
+        page = PageRequest.of( 0, 10);
 
         List<Booking> bookingList = repository.findByItemOwnerIdAndStatus(user.getId(), REJECTED, page).getContent();
 

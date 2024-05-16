@@ -20,20 +20,20 @@ public class BookingDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime end;
     private BookingStatus status;
-    private Item item;
-    private Booker booker;
+    private ItemDtoResponse item;
+    private UserDtoResponse booker;
 
     @Getter
     @Setter
     @AllArgsConstructor
-    public static class Booker {
+    public static class UserDtoResponse {
         private Long id;
     }
 
     @Getter
     @Setter
     @AllArgsConstructor
-    public static class Item {
+    public static class ItemDtoResponse {
         private Long id;
         private String name;
     }

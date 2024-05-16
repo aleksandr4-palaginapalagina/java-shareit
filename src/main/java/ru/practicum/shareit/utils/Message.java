@@ -7,6 +7,7 @@ public enum Message {
         DELETE_MODEL("deleting the model with id {}"),
         REQUEST_ALL("Request all models"),
         REQUEST_BY_ID("model request by id {}"),
+        REQUEST_BY_USER_ID("Request all request by user Id "),
         NAME_MAY_NOT_CONTAIN_SPACES("Name may not be empty or contain spaces"),
         MODEL_NOT_FOUND("model was not found by the passed ID: "),
         NOT_AVAILABLE("Item is not available for booking"),

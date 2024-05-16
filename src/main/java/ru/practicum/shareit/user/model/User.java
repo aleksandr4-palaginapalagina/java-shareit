@@ -1,6 +1,7 @@
 package ru.practicum.shareit.user.model;
 
 import lombok.*;
+import org.hibernate.annotations.DynamicUpdate;
 
 
 import javax.persistence.*;
@@ -16,10 +17,7 @@ import javax.persistence.*;
 @ToString
 @Getter
 @Setter
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@DynamicUpdate
 public class User {
 
     @Id
@@ -33,6 +31,5 @@ public class User {
     private String name;
 
     @Column(nullable = false)
-    @EqualsAndHashCode.Include
     private String email;
 }

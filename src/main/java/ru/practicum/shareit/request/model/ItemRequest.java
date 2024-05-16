@@ -1,4 +1,4 @@
-package ru.practicum.shareit.request;
+package ru.practicum.shareit.request.model;
 
 import lombok.*;
 import ru.practicum.shareit.user.model.User;
@@ -29,9 +29,9 @@ public class ItemRequest {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
-    @JoinColumn(name = "requester_id", nullable = false)
+    @JoinColumn(name = "requester_id")
     private User requester;
 
     @Column(name = "created_date", nullable = false, updatable = false)
-    private LocalDateTime created;
+    private LocalDateTime created = LocalDateTime.now();
 }

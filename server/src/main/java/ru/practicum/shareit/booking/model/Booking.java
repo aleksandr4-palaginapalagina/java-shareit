@@ -9,9 +9,7 @@ import ru.practicum.shareit.user.model.User;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-/**
- * TODO Sprint add-bookings.
- */
+
 @Entity
 @Table(name = "bookings")
 @Getter
@@ -25,25 +23,25 @@ public class Booking {
             name = "id",
             updatable = false
     )
-    private Long id;  // уникальный идентификатор бронирования;
+    private Long id;
 
     @Column(name = "start_date", nullable = false)
-    private LocalDateTime start; // дата и время начала бронирования;
+    private LocalDateTime start;
 
     @Column(name = "end_date", nullable = false)
-    private LocalDateTime end; // дата и время конца бронирования;
+    private LocalDateTime end;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     @JoinColumn(name = "item_id")
-    private Item item; // вещь, которую пользователь бронирует;
+    private Item item;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     @JoinColumn(name = "booker_id")
-    private User booker; // пользователь, который осуществляет бронирование;
+    private User booker;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private BookingStatus status; // статус бронирования.
+    private BookingStatus status;
 }

@@ -15,9 +15,9 @@ import javax.validation.constraints.NotBlank;
 public class UserRequestDto {
 
     private Long id;
-    private String name; // имя или логин пользователя;
+    private String name;
 
     @NotBlank
     @Email
-    private String email; // адрес электронной почты.
+    private String email;
 }

@@ -8,6 +8,6 @@ import java.time.LocalDateTime;
 @Data
 public class CommentDto {
 
-    private String text; // содержимое комментария;
+    private String text;
     private LocalDateTime created = LocalDateTime.now();
 }

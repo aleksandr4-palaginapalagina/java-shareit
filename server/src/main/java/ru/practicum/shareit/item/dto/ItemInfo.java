@@ -13,11 +13,11 @@ import java.util.Set;
 @AllArgsConstructor
 public class ItemInfo {
 
-    private Long id; // уникальный идентификатор вещи;
-    private String name; // краткое название;
-    private String description; // развёрнутое описание;
-    private Boolean available; // статус о том, доступна или нет вещь для аренды;
-    private BookingDtoForItem lastBooking; // последнее бронирование;
-    private BookingDtoForItem nextBooking; // ближайшее следующее бронирование;
+    private Long id;
+    private String name;
+    private String description;
+    private Boolean available;
+    private BookingDtoForItem lastBooking;
+    private BookingDtoForItem nextBooking;
     private Set<CommentDtoResponse> comments = new HashSet<>();
 }

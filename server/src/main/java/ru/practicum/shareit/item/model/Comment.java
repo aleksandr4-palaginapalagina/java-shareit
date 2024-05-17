@@ -19,21 +19,21 @@ public class Comment {
             name = "id",
             updatable = false
     )
-    private Long id; // уникальный идентификатор комментария;
+    private Long id;
 
     @Column (nullable = false)
-    private String text; // содержимое комментария;
+    private String text;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     @JoinColumn(name = "item_id")
-    private Item item; // вещь, к которой относится комментарий;
+    private Item item;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     @JoinColumn(name = "author_id", updatable = false)
-    private User author; // автор комментария;
+    private User author;
 
     @Column(name = "created_date", nullable = false, updatable = false)
-    private LocalDateTime created; // дата создания комментария.
+    private LocalDateTime created;
 }

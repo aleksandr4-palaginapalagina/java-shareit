@@ -15,7 +15,7 @@ import static ru.practicum.shareit.booking.model.BookingStatus.WAITING;
 public class BookingDtoRequest {
 
     private Long itemId;
-    private LocalDateTime start; // дата и время начала бронирования;
-    private LocalDateTime end; // дата и время конца бронирования;
-    private final BookingStatus status = WAITING; // статус бронирования.
+    private LocalDateTime start;
+    private LocalDateTime end;
+    private final BookingStatus status = WAITING;
 }

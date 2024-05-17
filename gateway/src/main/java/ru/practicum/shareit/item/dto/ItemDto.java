@@ -15,12 +15,12 @@ public class ItemDto {
     private Long id;
 
     @NotBlank
-    private String name; // краткое название;
+    private String name;
 
     @NotBlank
-    private String description; // развёрнутое описание;
+    private String description;
 
     @NotNull
-    private Boolean available; // статус о том, доступна или нет вещь для аренды
-    private Long requestId; // id запроса (заполняется только если вещь создана по запросу).
+    private Boolean available;
+    private Long requestId;
 }

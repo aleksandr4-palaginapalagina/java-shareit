@@ -7,9 +7,6 @@ import ru.practicum.shareit.user.model.User;
 
 import javax.persistence.*;
 
-/**
- * TODO Sprint add-controllers.
- */
 
 @Entity
 @Table(name = "items")
@@ -26,19 +23,19 @@ public class Item {
             name = "id",
             updatable = false
     )
-    private Long id; // уникальный идентификатор вещи;
+    private Long id;
 
     @Column(nullable = false)
-    private String name; // краткое название;
+    private String name;
 
     @Column(nullable = false)
-    private String description; // развёрнутое описание;
+    private String description;
 
     @Column(
             name = "is_available",
             nullable = false
     )
-    private Boolean available; // статус о том, доступна или нет вещь для аренды;
+    private Boolean available;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
@@ -48,5 +45,5 @@ public class Item {
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
     @JoinColumn(name = "request_id")
-    private ItemRequest request; // ссылка на соответствующий запрос (заполняется только если вещь создана по запросу).
+    private ItemRequest request;
 }

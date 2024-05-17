@@ -9,9 +9,9 @@ import lombok.*;
 @ToString
 public class ItemDto {
 
-    private Long id; // уникальный идентификатор вещи;
-    private String name; // краткое название;
-    private String description; // развёрнутое описание;
-    private Boolean available; // статус о том, доступна или нет вещь для аренды
-    private Long requestId; // id запроса (заполняется только если вещь создана по запросу).
+    private Long id;
+    private String name;
+    private String description;
+    private Boolean available;
+    private Long requestId;
 }

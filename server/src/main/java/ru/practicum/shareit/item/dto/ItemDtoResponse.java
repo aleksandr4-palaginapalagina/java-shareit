@@ -7,6 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class ItemDtoResponse {
 
-    private Long id; // уникальный идентификатор вещи;
-    private String name; // краткое название;
+    private Long id;
+    private String name;
 }

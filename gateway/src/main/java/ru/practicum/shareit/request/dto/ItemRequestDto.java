@@ -13,10 +13,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ItemRequestDto {
 
-    private Long id; // уникальный идентификатор запроса;
+    private Long id;
 
     @NotBlank
-    private String description; // текст запроса, содержащий описание требуемой вещи;
+    private String description;
 
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime created;

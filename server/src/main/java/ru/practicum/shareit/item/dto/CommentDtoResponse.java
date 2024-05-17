@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 @Data
 public class CommentDtoResponse {
 
-    private long id; // уникальный идентификатор комментария;
-    private String text; // содержимое комментария;
-    private String authorName; // автор комментария;
-    private LocalDateTime created; // дата создания комментария.
+    private long id;
+    private String text;
+    private String authorName;
+    private LocalDateTime created;
 }

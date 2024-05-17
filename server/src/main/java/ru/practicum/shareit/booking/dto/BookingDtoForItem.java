@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BookingDtoForItem {
 
-    private Long id;  // уникальный идентификатор бронирования;
+    private Long id;
     private LocalDateTime start;
     private LocalDateTime end;
-    private Long bookerId; // пользователь, который осуществляет бронирование;
+    private Long bookerId;
 }
